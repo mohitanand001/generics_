@@ -16,8 +16,6 @@ public:
 
 	vector& operator=(const vector &v);
 
-	void operator=(T);
-
 	vector operator*(vector &x); 
 
 	T& operator[](int n);
