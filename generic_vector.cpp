@@ -36,6 +36,9 @@ public:
 
 	void pop_back();
 
+	const T* begin() const; 
+
+	const T* end() const;
 	// unblocks/frees up memory blocked/acquired by this->head
 	~vector(){ delete[] this->head; }
 };
@@ -100,11 +103,11 @@ vector<T>& vector<T>::operator=(vector &&v){
 		return (*this);
 	}
 
-	T *n_head = new T[v.sz];
 	delete[] (this->head);
 	this->sz = v.sz;
 	this->space = v.sz;
-	this->head = n_head;
+	this->head = v.head;
+	v.head = NULL;
 
 	return (*this);
 }
@@ -218,6 +221,18 @@ void vector<T>::pop_back(){
 	sz = sz - 1;
 }
 
+template <class T>
+const T* vector<T>::begin() const{
+
+	return (this->head);
+}
+
+template <class T>
+const T* vector<T>::end() const{
+
+	return (this->head + this->sz);
+}
+
 int main()
 {
 	vector<int> vec;
@@ -251,7 +266,7 @@ int main()
 	cout << endl;
 
 	vector<double> rec;
-	rec = lec*dec;
+	rec = lec*lec;
 
 /*	The follwing line throws error since, res[0] will evaluate to a number
 	because of operator [] overloading, will have to figure out how 
@@ -275,6 +290,13 @@ int main()
 	cout <<"rec size after pop_back " << rec.size() << endl;
 
 
+	// testing iterators
+	for(auto it = rec.begin(); it != rec.end(); ++it){
+
+		cout << (*it) << " "; 
+	}
+
+	cout << endl;
 	// throws out of bounds exception
 	rec[234];
 
