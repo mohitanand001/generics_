@@ -32,9 +32,9 @@ public:
 
 	void reserve(int allocate_size);
 
-	const T* begin();
+	const T* begin() const;
 
-	const T* end();
+	const T* end() const;
 
 	~stack() {delete[] head;}
 };
@@ -158,15 +158,21 @@ void stack<T>::push(const T &x){
 
 /*the ptrs returned from T* can be used to change the value of the
 container, but we do not want to do this using an iterator, so we use
-a const pointer, so it does not change the value to which it is pointing*/
+a const pointer, so it does not change the value to which it is pointing
+https://www.youtube.com/watch?v=IMhdMo5wcC0
+*/
+
+/*https://stackoverflow.com/questions/3141087/what-is-meant-with-const-at-end-of-function-declaration*/
+/*We do not want the member function begin and end also to not change the object `this` data
+hence we make it const by using const like .....begin() const { .. */
 template <class T>
-const T* stack<T>::begin(){
+const T* stack<T>::begin() const{
 
 	return (this->head);
 }
 
 template <class T>
-const T* stack<T>::end(){
+const T* stack<T>::end const(){
 	return (this->head) + sz;
 }
 
