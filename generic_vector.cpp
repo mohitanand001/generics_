@@ -14,7 +14,11 @@ public:
 	
 	vector(int curr_size): sz(curr_size), head(new T[curr_size]), space(curr_size) {}
 
+	vector(const vector &x);
+
 	vector& operator=(const vector &v);
+
+	vector& operator=(vector &&v);
 
 	vector operator*(vector &x); 
 
@@ -35,6 +39,19 @@ public:
 	// unblocks/frees up memory blocked/acquired by this->head
 	~vector(){ delete[] this->head; }
 };
+
+template<class T>
+vector<T>::vector(const vector &x){
+
+	this->head = new T[x.space];
+	this->sz = x.sz;
+	this->space = x.space;
+
+	for(int i = 0; i < x.sz; i +=1){
+		(this->head)[i] = x[i];
+	}
+}
+
 
 template <class T>
 vector<T>& vector<T>::operator=(const vector &v)
@@ -59,6 +76,32 @@ vector<T>& vector<T>::operator=(const vector &v)
 
 	delete [] (this->head);
 
+	this->sz = v.sz;
+	this->space = v.sz;
+	this->head = n_head;
+
+	return (*this);
+}
+
+
+template <class T>
+vector<T>& vector<T>::operator=(vector &&v){
+
+	cout << "move constructor called" << endl;
+
+	if(this->head == (v.head))
+		return (*this);
+
+	if(this->space >= v.sz){
+		delete [] (this->head);
+		this->head = v.head;
+		this->sz = v.sz;
+		v.head = NULL;
+		return (*this);
+	}
+
+	T *n_head = new T[v.sz];
+	delete[] (this->head);
 	this->sz = v.sz;
 	this->space = v.sz;
 	this->head = n_head;
