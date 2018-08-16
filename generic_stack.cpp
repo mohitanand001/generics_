@@ -23,7 +23,10 @@ public:
 
 	void pop();
 
-	void push(T x);
+	/*passed the parameter as a const reference 
+	since if T is user defined type, it is wasteful to do 
+	a copy. */
+	void push(const T &x);
 
 	int size();
 
@@ -136,7 +139,7 @@ void stack<T>::reserve(int allocate_size){
 }
 
 template<class T>
-void stack<T>::push(T x){
+void stack<T>::push(const T &x){
 
 	if(sz == 0)
 		reserve(10);
