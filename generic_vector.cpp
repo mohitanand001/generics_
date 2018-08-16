@@ -30,6 +30,8 @@ public:
 
 	void push_back(T element); 
 
+	void pop_back();
+
 	// unblocks/frees up memory blocked/acquired by this->head
 	~vector(){ delete[] this->head; }
 };
@@ -159,6 +161,20 @@ void vector<T>::push_back(T element)
 
 }
 
+template<class T>
+void vector<T>::pop_back(){
+
+	try{
+		if(sz == 0)
+			throw -1;
+	}
+	catch(int e){
+		cout << "size underflow." << endl;
+	}
+
+	sz = sz - 1;
+}
+
 int main()
 {
 	vector<int> vec;
@@ -209,6 +225,12 @@ int main()
 
 	for(int i = 0; i < rec.size(); i +=1)
 		cout << rec[i] << " ";
+	cout << endl;
+
+	cout <<"rec size before pop_back " << rec.size() << endl;
+	rec.pop_back();
+	cout <<"rec size after pop_back " << rec.size() << endl;
+
 
 	// throws out of bounds exception
 	rec[234];
