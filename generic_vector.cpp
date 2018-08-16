@@ -28,7 +28,7 @@ public:
 
 	void reserve(int allocate_size);
 
-	void push_back(T element); 
+	void push_back(const T &element); 
 
 	void pop_back();
 
@@ -149,7 +149,7 @@ void vector<T>::reserve(int allocate_size)
 
 
 template <class T>
-void vector<T>::push_back(T element)
+void vector<T>::push_back(const T &element)
 {
 	if(sz == 0)
 		reserve(10);
