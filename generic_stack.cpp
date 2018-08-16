@@ -32,9 +32,9 @@ public:
 
 	void reserve(int allocate_size);
 
-	T* begin();
+	const T* begin();
 
-	T* end();
+	const T* end();
 
 	~stack() {delete[] head;}
 };
@@ -155,14 +155,18 @@ void stack<T>::push(const T &x){
 	sz+=1;
 }
 
+
+/*the ptrs returned from T* can be used to change the value of the
+container, but we do not want to do this using an iterator, so we use
+a const pointer, so it does not change the value to which it is pointing*/
 template <class T>
-T* stack<T>::begin(){
+const T* stack<T>::begin(){
 
 	return (this->head);
 }
 
 template <class T>
-T* stack<T>::end(){
+const T* stack<T>::end(){
 	return (this->head) + sz;
 }
 
