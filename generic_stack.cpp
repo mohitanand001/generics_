@@ -32,6 +32,10 @@ public:
 
 	void reserve(int allocate_size);
 
+	T* begin();
+
+	T* end();
+
 	~stack() {delete[] head;}
 };
 
@@ -151,17 +155,34 @@ void stack<T>::push(const T &x){
 	sz+=1;
 }
 
+template <class T>
+T* stack<T>::begin(){
+
+	return (this->head);
+}
+
+template <class T>
+T* stack<T>::end(){
+	return (this->head) + sz;
+}
+
 
 
 int main()
 {
 	stack<int> stk;
 	stk.push(12);
-	stk.push(32);
+	stk.push(32);stk.push(132);stk.push(332);stk.push(321);
+	stk.push(98);stk.push(198);stk.push(984);
 	stk.pop();
 
 	cout << stk.top() << endl;
 
+	for(auto it = stk.begin(); it != stk.end(); ++it)
+	{
+		cout << (*it) << " " ;
+	}
 
+	cout << endl;
 	return 0;
 }
