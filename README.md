@@ -12,6 +12,6 @@ Generic implementations of C++ STL vector, stack, queue, ...
 
 # Useful Links
 [What does it mean to return a reference
-and when should we do it](https://stackoverflow.com/questions/752658/is-the-practice-of-returning-a-c-reference-variable-evil)
-[Move constructors(why do we need them )](https://stackoverflow.com/questions/3106110/what-are-move-semantics)
+and when should we do it](https://stackoverflow.com/questions/752658/is-the-practice-of-returning-a-c-reference-variable-evil)<br>
+[Move constructors(why do we need them )](https://stackoverflow.com/questions/3106110/what-are-move-semantics)<br>
 [Templates in depth](http://www.bogotobogo.com/cplusplus/templates.php)
