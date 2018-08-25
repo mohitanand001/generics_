@@ -9,6 +9,10 @@ Generic implementations of C++ STL vector, stack, queue, ...
    operations like `a=b=c`.	
 5. When you create a move constructor, the default copy constructors are not created, by the 
    compiler.  	
+# Goals
+- [ ] c++ queue is not iterable while deque is, so implement an iterable queue.
+- [ ] Java/Python inspired map for c++, which does not automatically create map objects when tried to acces.
+
 
 # Useful Links
 [What does it mean to return a reference
