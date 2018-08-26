@@ -10,6 +10,7 @@ Generic implementations of C++ STL vector, stack, queue, ...
 5. When you create a move constructor, the default copy constructors are not created, by the 
    compiler.  	
 # Goals
+- [x] vectors which throw exceptions when out of bounds elements are accessed. (This feature is available in c++, but we need to use `my_vector.at(index)` )
 - [ ] c++ queue is not iterable while deque is, so implement an iterable queue.
 - [ ] Java/Python inspired map for c++, which does not automatically create map objects when tried to acces.
 
